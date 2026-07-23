@@ -50,4 +50,4 @@ memory-bank/progress.md
 
 # Temporary files
 *.tmp
-*.temp
+*.tempnode_modules/
