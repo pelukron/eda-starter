@@ -7,7 +7,7 @@ async function main() {
   console.log('🚀 EDA Starter Demo — Event-Driven Order Flow');
   console.log('='.repeat(50));
 
-  const bus = await buildApplication();
+  const { bus } = await buildApplication();
 
   const order = new OrderCreated({
     orderId: `ord_${randomUUID().slice(0, 8)}`,

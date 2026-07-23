@@ -14,16 +14,16 @@ Learn EDA patterns by running a working demo. No external dependencies (Kafka, R
 
 ## 🏗 Architecture
 
-```
-┌─────────────┐     ┌──────────────┐     ┌─────────────────┐
-│  Publisher  │────▶│  Event Bus   │────▶│  Subscribers    │
-│  (Producer) │     │  (In-Memory) │     │  (Consumers)    │
-└─────────────┘     └──────┬───────┘     └────────┬────────┘
-                           │                      │
-                    ┌──────▼──────┐      ┌────────▼────────┐
-                    │ Event Store │      │  Notification   │
-                    │ (Append-Log)│      │  (Wildcard *)   │
-                    └─────────────┘      └───────────────┘
+```mermaid
+graph LR
+    P[Publisher] -->|OrderCreated| B[Event Bus]
+    B -->|PaymentReserved| H1[Payment Handler]
+    B -->|InventoryReserved| H2[Inventory Handler]
+    B -->|* (wildcard)| N[Notification Handler]
+    B -->|dual write| S[Event Store]
+    B -->|dual write| O[Outbox]
+    H1 -->|PaymentReserved| B
+    H2 -->|InventoryReserved| B
 ```
 
 ## 🚀 Quickstart
@@ -62,15 +62,15 @@ src/
 │   ├── sagas/           # Orchestrators (OrderSaga)
 │   └── bootstrap.ts     # Composition root
 ├── infrastructure/
-│   ├── event_bus/       # InMemoryEventBus
-│   ├── event_store/     # InMemoryEventStore
+│   ├── event-bus/       # InMemoryEventBus
+│   ├── event-store/     # InMemoryEventStore
 │   └── outbox/          # TransactionalOutbox
 └── demo.ts              # Runnable demo
 ```
 
 ## 🤝 Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) — uses conventional commits, pre-commit, TDD.
+See [CONTRIBUTING.md](CONTRIBUTING.md) — uses conventional commits, TDD, clean architecture.
 
 ## 📄 License
 
