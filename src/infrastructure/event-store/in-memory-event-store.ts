@@ -27,13 +27,17 @@ export class InMemoryEventStore {
     }
   }
 
-  public async subscribe(): Promise<AsyncIterableIterator<Event>> {
+  public subscribe(): AsyncIterableIterator<Event> {
     const queue: Event[] = [];
     let resolve: (value: Event) => void;
-    const promise = new Promise<Event>((r) => {
+    let promise = new Promise<Event>((r) => {
       resolve = r;
     });
-    const subscriber = { queue, resolve: resolve as (value: Event) => void };
+    const subscriber = {
+      queue,
+      get resolve() { return resolve; },
+      set resolve(v: (value: Event) => void) { resolve = v; }
+    };
     this.subscribers.push(subscriber);
 
     return (async function* () {
@@ -43,7 +47,9 @@ export class InMemoryEventStore {
           if (event) yield event;
         } else {
           yield await promise;
-          // Re-create promise for next event
+          promise = new Promise<Event>((r) => {
+            resolve = r;
+          });
         }
       }
     })();
