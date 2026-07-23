@@ -1,0 +1,53 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# uv
+uv.lock
+.uv/
+.venv/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+
+# Type checking
+.mypy_cache/
+.pyre/
+
+# Documentation
+site/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Memory bank (local state)
+memory-bank/activeContext.md
+memory-bank/progress.md
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
