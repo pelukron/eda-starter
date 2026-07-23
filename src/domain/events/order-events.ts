@@ -1,5 +1,4 @@
-import type { EventPayload } from './event.js';
-import { Event } from './event.js';
+import { Event, type EventPayload } from './event.js';
 
 export interface OrderCreatedPayload extends EventPayload {
   readonly orderId: string;

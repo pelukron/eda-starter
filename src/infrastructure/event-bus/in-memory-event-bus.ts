@@ -12,7 +12,7 @@ export class InMemoryEventBus {
       if (!this.handlers.has(handler.handles)) {
         this.handlers.set(handler.handles, new Set());
       }
-      this.handlers.get(handler.handles)!.add(handler);
+      this.handlers.get(handler.handles)?.add(handler);
     }
   }
 

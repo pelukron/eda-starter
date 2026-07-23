@@ -5,11 +5,12 @@ Event-Driven Architecture starter kit demonstrating fundamental patterns:
 
 [![CI](https://github.com/pelukron/eda-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/pelukron/eda-starter/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![Node 20+](https://img.shields.io/badge/node-20+-green.svg)](https://nodejs.org/)
+[![TypeScript 5+](https://img.shields.io/badge/typescript-5+-blue.svg)](https://www.typescriptlang.org/)
 
 ## 🎯 Purpose
 
-Learn EDA patterns by running a working demo. No external dependencies (Kafka, RabbitMQ, AWS) — pure Python, in-memory.
+Learn EDA patterns by running a working demo. No external dependencies (Kafka, RabbitMQ, AWS) — pure TypeScript, in-memory.
 
 ## 🏗 Architecture
 
@@ -30,8 +31,8 @@ Learn EDA patterns by running a working demo. No external dependencies (Kafka, R
 ```bash
 git clone https://github.com/pelukron/eda-starter
 cd eda-starter
-uv sync --all-extras
-make demo
+pnpm install
+pnpm dev
 ```
 
 ## 📚 Documentation
@@ -52,19 +53,19 @@ make demo
 ## 🧱 Project Structure
 
 ```
-eda_starter/
+src/
 ├── domain/
 │   ├── events/          # Event definitions (Event, OrderCreated, ...)
 │   └── ports/           # Interfaces (EventHandler)
 ├── application/
 │   ├── handlers/        # Concrete handlers (Payment, Inventory, ...)
 │   ├── sagas/           # Orchestrators (OrderSaga)
-│   └── bootstrap.py     # Composition root
+│   └── bootstrap.ts     # Composition root
 ├── infrastructure/
 │   ├── event_bus/       # InMemoryEventBus
 │   ├── event_store/     # InMemoryEventStore
 │   └── outbox/          # TransactionalOutbox
-└── demo.py              # Runnable demo
+└── demo.ts              # Runnable demo
 ```
 
 ## 🤝 Contributing

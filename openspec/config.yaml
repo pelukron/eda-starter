@@ -1,0 +1,41 @@
+schema: spec-driven
+
+context: |
+  Project: eda-starter — Event-Driven Architecture Starter Kit
+  Tech stack: TypeScript 5.4, Node.js 20+, pnpm, Biome, Vitest, VitePress
+  Architecture: Clean Architecture (domain/ → application/ → infrastructure/)
+  Patterns: Event-Driven (Pub/Sub), Event Sourcing, Saga, Outbox
+  Domain: E-commerce order flow (OrderCreated → PaymentReserved → InventoryReserved → OrderConfirmed)
+  Conventions:
+    - Conventional commits (feat, fix, chore, docs, refactor, test)
+    - TDD: write failing test first, then minimal implementation
+    - Biome for lint/format (single quotes, 100 cols, trailing commas)
+    - TypeScript strict mode, no `any`
+    - In-memory only (no external deps for core)
+    - Clean Architecture layers with strict dependency direction
+
+rules:
+  proposal:
+    - Keep proposals under 500 words
+    - Always include "Non-goals" section
+    - Reference GitHub issue numbers
+  plan:
+    - Break into 2-5 min tasks
+    - Each task: exact files, complete code, exact commands
+  tasks:
+    - Max 2 hours per task
+    - Include TDD cycle: test → fail → implement → pass → commit
+  verify:
+    - Run `pnpm lint && pnpm typecheck && pnpm test` before commit
+
+# Per-artifact rules
+proposal:
+  - Reference GitHub issue
+  - Define clear success criteria (measurable)
+plan:
+  - Exact file paths
+  - Complete code snippets (copy-pasteable)
+  - Exact commands with expected output
+tasks:
+  - One task per commit
+  - Test first (TDD)
