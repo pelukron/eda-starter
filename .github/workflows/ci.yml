@@ -23,7 +23,7 @@ jobs:
       - name: Run tests
         run: uv run pytest --cov=eda_starter --cov-report=xml
       - name: Upload coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v7
 
   docs:
     runs-on: ubuntu-latest
