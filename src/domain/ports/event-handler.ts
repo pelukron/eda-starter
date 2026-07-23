@@ -1,7 +1,7 @@
-import { Event } from "../events/event.js";
+import type { Event } from '../events/event.js';
 
 export interface EventHandler<TEvent extends Event = Event> {
-  readonly handles: string | "*";
+  readonly handles: string | '*';
   handle(event: TEvent): Promise<void>;
 }
 

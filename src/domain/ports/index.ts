@@ -1,1 +1,1 @@
-export * from "./event-handler.js";
+export * from './event-handler.js';

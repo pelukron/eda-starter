@@ -1,12 +1,12 @@
-import { Event } from "../../domain/events/event.js";
-import { EventHandler } from "../../domain/ports/event-handler.js";
+import type { Event } from '../../domain/events/event.js';
+import type { EventHandler } from '../../domain/ports/event-handler.js';
 
 export class InMemoryEventBus {
   private readonly handlers = new Map<string, Set<EventHandler>>();
   private readonly wildcardHandlers = new Set<EventHandler>();
 
   public subscribe(handler: EventHandler): void {
-    if (handler.handles === "*") {
+    if (handler.handles === '*') {
       this.wildcardHandlers.add(handler);
     } else {
       if (!this.handlers.has(handler.handles)) {
@@ -17,7 +17,7 @@ export class InMemoryEventBus {
   }
 
   public unsubscribe(handler: EventHandler): void {
-    if (handler.handles === "*") {
+    if (handler.handles === '*') {
       this.wildcardHandlers.delete(handler);
     } else {
       this.handlers.get(handler.handles)?.delete(handler);
@@ -30,9 +30,7 @@ export class InMemoryEventBus {
 
     if (allHandlers.length === 0) return;
 
-    await Promise.allSettled(
-      allHandlers.map((handler) => handler.handle(event as never))
-    );
+    await Promise.allSettled(allHandlers.map((handler) => handler.handle(event as never)));
   }
 
   public async publishAll<TEvent extends Event>(events: TEvent[]): Promise<void> {

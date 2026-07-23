@@ -1,0 +1,71 @@
+{
+  "name": "eda-starter",
+  "version": "0.1.0",
+  "description": "Event-Driven Architecture starter: clean Pub/Sub event bus, patterns, memory bank",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./domain": {
+      "import": "./dist/domain/index.js",
+      "types": "./dist/domain/index.d.ts"
+    },
+    "./application": {
+      "import": "./dist/application/index.js",
+      "types": "./dist/application/index.d.ts"
+    },
+    "./infrastructure": {
+      "import": "./dist/infrastructure/index.js",
+      "types": "./dist/infrastructure/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/demo.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "prepare": "husky install"
+  },
+  "keywords": ["event-driven", "architecture", "pubsub", "event-bus", "clean-architecture"],
+  "author": "Diego Moreno <diego@pelukron.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pelukron/eda-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pelukron/eda-starter/issues"
+  },
+  "homepage": "https://github.com/pelukron/eda-starter#readme",
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.0",
+    "husky": "^9.0.0",
+    "prettier": "^3.2.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "vitepress": "^1.0.0",
+    "vitest": "^1.4.0",
+    "@vitest/coverage-v8": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
