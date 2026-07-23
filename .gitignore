@@ -1,13 +1,3 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# uv
-uv.lock
-.uv/
-.venv/
-
 # Distribution / packaging
 dist/
 build/
@@ -23,15 +13,21 @@ build/
 .DS_Store
 Thumbs.db
 
+# Node.js
+node_modules/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
 # Test / coverage
-.coverage
-htmlcov/
-.pytest_cache/
-.tox/
+coverage/
+.nyc_output/
+vitest-results/
 
 # Type checking
-.mypy_cache/
-.pyre/
+*.tsbuildinfo
 
 # Documentation
 site/
@@ -50,4 +46,4 @@ memory-bank/progress.md
 
 # Temporary files
 *.tmp
-*.tempnode_modules/
+*.temp

@@ -1,0 +1,76 @@
+name: Epic
+description: Create a new Epic (parent issue for a block of work)
+title: "[Epic] "
+labels: ["👑 epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Epic Template
+        
+        Use this template for major blocks of work that will be broken down into sub-issues.
+        
+        **Instructions:**
+        1. Fill in all sections below
+        2. After creating, assign a Milestone
+        3. Add Priority and Size labels
+        4. Add sub-issues using "Add sub-issue" button or CLI
+  
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What + why in one paragraph
+      placeholder: "As a developer learning EDA, I want a working event bus demo so I can understand Pub/Sub patterns..."
+    validations:
+      required: true
+  
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Dependencies, unlocks, and key decisions
+      placeholder: |
+        - **Depends on:** Block N (#M) — reason
+        - **Unlocks:** Block X, Block Y — what this enables
+        - Key decisions: in-memory bus, no external deps, TypeScript
+    validations:
+      required: true
+  
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Success Criteria
+      description: Measurable, verifiable criteria (5-9 items)
+      placeholder: |
+        - [ ] InMemoryEventBus publishes/subscribes with wildcard support
+        - [ ] OrderCreated → PaymentReserved → InventoryReserved → OrderConfirmed flow works
+        - [ ] All tests pass (unit + integration)
+        - [ ] Demo runs with `pnpm dev`
+        - [ ] Documentation covers architecture + patterns
+    validations:
+      required: true
+  
+  - type: textarea
+    id: subissues
+    attributes:
+      label: Sub-issues Plan
+      description: Planned sub-issues with sizes (will be created separately)
+      placeholder: |
+        1. feat: InMemoryEventBus with wildcard support (📏 M)
+        2. feat: Order domain events (📏 S)
+        3. feat: Payment/Inventory/Notification handlers (📏 M)
+        4. feat: Demo wiring + bootstrap (📏 S)
+        5. docs: Architecture + patterns guide (📏 M)
+  
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Technical decisions, alternatives, pitfalls
+      placeholder: |
+        - In-memory only — no persistence (by design for demo)
+        - Wildcard handlers for observability pattern
+        - Saga/Outbox patterns deferred to Phase 3
+    validations:
+      required: false
