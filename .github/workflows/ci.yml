@@ -33,7 +33,7 @@ jobs:
       - uses: astral-sh/setup-uv@v4
       - run: uv sync --all-extras
       - run: uv run mkdocs build --strict
-      - uses: peaceiris/actions-gh-pages@v3
+      - uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
