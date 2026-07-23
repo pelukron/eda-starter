@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import type { EventHandler } from './event-handler.js';
+import { describe, expect, it } from 'vitest';
 import type { EventPayload } from '../events/event.js';
 import { Event } from '../events/event.js';
+import type { EventHandler } from './event-handler.js';
 
 interface TestPayload extends EventPayload {
   value: string;

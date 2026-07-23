@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import type { EventPayload } from './event.js';
 import { Event } from './event.js';
 

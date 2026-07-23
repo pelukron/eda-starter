@@ -1,8 +1,8 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { InMemoryEventBus } from './in-memory-event-bus.js';
+import { beforeEach, describe, expect, it } from 'vitest';
 import type { EventPayload } from '../../domain/events/event.js';
 import { Event } from '../../domain/events/event.js';
 import type { EventHandler } from '../../domain/ports/event-handler.js';
+import { InMemoryEventBus } from './in-memory-event-bus.js';
 
 interface TestPayload extends EventPayload {
   value: string;

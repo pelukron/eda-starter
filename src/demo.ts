@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
+import { randomUUID } from 'node:crypto';
 import { buildApplication } from './application/bootstrap.js';
 import { OrderCreated } from './domain/events/order-events.js';
-import { randomUUID } from 'node:crypto';
 
 async function main() {
   console.log('🚀 EDA Starter Demo — Event-Driven Order Flow');

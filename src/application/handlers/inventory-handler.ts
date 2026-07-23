@@ -1,7 +1,7 @@
-import type { InMemoryEventBus } from '../../infrastructure/event-bus/in-memory-event-bus.js';
-import type { EventHandler } from '../../domain/ports/event-handler.js';
 import type { PaymentReserved } from '../../domain/events/order-events.js';
 import { InventoryReserved } from '../../domain/events/order-events.js';
+import type { EventHandler } from '../../domain/ports/event-handler.js';
+import type { InMemoryEventBus } from '../../infrastructure/event-bus/in-memory-event-bus.js';
 
 export class InventoryHandler implements EventHandler<PaymentReserved> {
   public readonly handles = 'PaymentReserved';
