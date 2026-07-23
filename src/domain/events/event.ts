@@ -15,7 +15,7 @@ export abstract class Event<TPayload extends EventPayload = EventPayload> {
   public readonly metadata: EventMetadata;
   public abstract readonly type: string;
 
-  protected constructor(
+  public constructor(
     public readonly payload: TPayload,
     metadata?: Partial<EventMetadata>
   ) {
