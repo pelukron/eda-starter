@@ -10,8 +10,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: astral-sh/setup-uv@v7
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v4
         with:
           version: "latest"
       - name: Install dependencies
@@ -30,7 +30,7 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v7
-      - uses: astral-sh/setup-uv@v4
+      - uses: astral-sh/setup-uv@v7
       - run: uv sync --all-extras
       - run: uv run mkdocs build --strict
       - uses: peaceiris/actions-gh-pages@v4
