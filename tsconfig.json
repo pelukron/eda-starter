@@ -15,13 +15,12 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "types": ["node"],
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "downlevelIteration": true,
-    "baseUrl": ".",
     "paths": {
-      "@eda-starter/*": ["src/*"]
+      "@eda-starter/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"],
