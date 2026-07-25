@@ -19,7 +19,7 @@ graph LR
     P[Publisher] -->|OrderCreated| B[Event Bus]
     B -->|PaymentReserved| H1[Payment Handler]
     B -->|InventoryReserved| H2[Inventory Handler]
-    B -->|* (wildcard)| N[Notification Handler]
+    B -->|"* (wildcard)"| N[Notification Handler]
     B -->|dual write| S[Event Store]
     B -->|dual write| O[Outbox]
     H1 -->|PaymentReserved| B
