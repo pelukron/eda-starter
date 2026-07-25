@@ -1,6 +1,6 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { InMemoryEventStore } from './in-memory-event-store.js';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { Event } from '../../domain/events/event.js';
+import { InMemoryEventStore } from './in-memory-event-store.js';
 
 class TestEvent extends Event {
   readonly type = 'TestEvent';
@@ -57,7 +57,7 @@ describe('InMemoryEventStore', () => {
       for await (const event of store.readStream(2, 4)) {
         events.push(event as TestEvent);
       }
-      expect(events.map(e => e.payload.value)).toEqual(['c', 'd']);
+      expect(events.map((e) => e.payload.value)).toEqual(['c', 'd']);
     });
 
     it('reads from beginning when no fromPosition', async () => {
@@ -65,7 +65,7 @@ describe('InMemoryEventStore', () => {
       for await (const event of store.readStream()) {
         events.push(event as TestEvent);
       }
-      expect(events.map(e => e.payload.value)).toEqual(['a', 'b', 'c', 'd', 'e']);
+      expect(events.map((e) => e.payload.value)).toEqual(['a', 'b', 'c', 'd', 'e']);
     });
 
     it('reads to end when no toPosition', async () => {
@@ -73,7 +73,7 @@ describe('InMemoryEventStore', () => {
       for await (const event of store.readStream(3)) {
         events.push(event as TestEvent);
       }
-      expect(events.map(e => e.payload.value)).toEqual(['d', 'e']);
+      expect(events.map((e) => e.payload.value)).toEqual(['d', 'e']);
     });
 
     it('returns empty when fromPosition >= last position', async () => {
@@ -100,7 +100,7 @@ describe('InMemoryEventStore', () => {
         if (count === 2) break;
       }
 
-      expect(received.map(e => e.payload.value)).toEqual(['first', 'second']);
+      expect(received.map((e) => e.payload.value)).toEqual(['first', 'second']);
     });
 
     it('does not replay existing events', async () => {
@@ -118,7 +118,7 @@ describe('InMemoryEventStore', () => {
         if (count === 1) break;
       }
 
-      expect(received.map(e => e.payload.value)).toEqual(['new']);
+      expect(received.map((e) => e.payload.value)).toEqual(['new']);
     });
 
     it('multiple subscribers receive same events', async () => {
@@ -130,7 +130,8 @@ describe('InMemoryEventStore', () => {
 
       await store.append(new TestEvent({ value: 'shared' }));
 
-      let count1 = 0, count2 = 0;
+      let count1 = 0,
+        count2 = 0;
       const promises = [
         (async () => {
           for await (const event of iterator1) {
