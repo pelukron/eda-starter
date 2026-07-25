@@ -35,6 +35,10 @@ pnpm install
 pnpm dev
 ```
 
+## 🗺 Roadmap
+
+Ver [ROADMAP.md](ROADMAP.md) para fases (v0.1.0/v0.2.0/v0.3.0), componentes por patrón, estado de issues/milestones y decisiones de diseño.
+
 ## 📚 Documentation
 
 - [Architecture Overview](https://pelukron.github.io/eda-starter/architecture/overview/)

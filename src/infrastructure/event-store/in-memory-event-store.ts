@@ -35,8 +35,12 @@ export class InMemoryEventStore {
     });
     const subscriber = {
       queue,
-      get resolve() { return resolve; },
-      set resolve(v: (value: Event) => void) { resolve = v; }
+      get resolve() {
+        return resolve;
+      },
+      set resolve(v: (value: Event) => void) {
+        resolve = v;
+      },
     };
     this.subscribers.push(subscriber);
 
