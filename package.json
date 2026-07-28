@@ -36,7 +36,7 @@
     "typecheck": "tsc --noEmit",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "keywords": ["event-driven", "architecture", "pubsub", "event-bus", "clean-architecture"],
   "author": "Diego Moreno <diego@pelukron.dev>",
@@ -62,5 +62,5 @@
   "engines": {
     "node": ">=20.0.0"
   },
-  "packageManager": "pnpm@9.0.0"
+  "packageManager": "pnpm@11.17.0"
 }
