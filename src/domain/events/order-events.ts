@@ -46,3 +46,22 @@ export interface OrderFailedPayload extends EventPayload {
 export class OrderFailed extends Event<OrderFailedPayload> {
   public readonly type = 'OrderFailed';
 }
+
+export interface InventoryReleasedPayload extends EventPayload {
+  readonly orderId: string;
+  readonly items: readonly { readonly sku: string; readonly qty: number }[];
+}
+
+export class InventoryReleased extends Event<InventoryReleasedPayload> {
+  public readonly type = 'InventoryReleased';
+}
+
+export interface PaymentRefundedPayload extends EventPayload {
+  readonly orderId: string;
+  readonly paymentId: string;
+  readonly amount: number;
+}
+
+export class PaymentRefunded extends Event<PaymentRefundedPayload> {
+  public readonly type = 'PaymentRefunded';
+}

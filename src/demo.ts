@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 import { randomUUID } from 'node:crypto';
 import { buildApplication } from './application/bootstrap.js';
-import { OrderCreated } from './domain/events/order-events.js';
+import { OrderCreated, OrderFailed } from './domain/events/order-events.js';
 
 async function main() {
   console.log('🚀 EDA Starter Demo — Event-Driven Order Flow');
@@ -18,6 +18,14 @@ async function main() {
 
   console.log(`📥 Publishing: ${order.type} (order=${order.payload.orderId})`);
   await bus.publish(order);
+
+  console.log('\n↩️  Publishing a late failure to demonstrate compensation');
+  await bus.publish(
+    new OrderFailed({
+      orderId: order.payload.orderId,
+      reason: 'demo compensation',
+    })
+  );
 
   await new Promise((r) => setTimeout(r, 100));
   console.log('\n✅ Demo complete — check logs above for event flow');
