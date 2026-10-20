@@ -125,6 +125,26 @@ describe('InMemoryEventBus', () => {
     expect(handler.handled).toHaveLength(3);
   });
 
+  it('invokes handlers in subscription order across exact and wildcard', async () => {
+    const order: string[] = [];
+    const wildcard = new WildcardHandler();
+    const exact = new TestHandler();
+
+    wildcard.handle = async () => {
+      order.push('wildcard');
+    };
+    exact.handle = async () => {
+      order.push('exact');
+    };
+
+    bus.subscribe(wildcard);
+    bus.subscribe(exact);
+
+    await bus.publish(new TestEvent({ value: 'order' }));
+
+    expect(order).toEqual(['wildcard', 'exact']);
+  });
+
   it('getSubscriberCount returns correct counts', () => {
     const h1 = new TestHandler();
     const h2 = new WildcardHandler();

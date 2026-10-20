@@ -42,8 +42,8 @@ Añade persistencia de eventos, orquestación con compensación y publicación c
 | Componente | Patrón | Archivo | Issue | Estado |
 |------------|--------|---------|-------|--------|
 | `InMemoryEventStore` (append-only, streams, subscriptions) | **Event Sourcing** | `src/infrastructure/event-store/in-memory-event-store.ts` | [#14](https://github.com/pelukron/eda-starter/issues/14) | ✅ Completo (PR [#18](https://github.com/pelukron/eda-starter/pull/18)) |
-| `OrderSaga` orchestrator + compensación | **Saga** | `src/application/sagas/` (pendiente) | [#15](https://github.com/pelukron/eda-starter/issues/15) | ⏳ Pendiente |
-| `TransactionalOutbox` con relay | **Outbox** | `src/infrastructure/outbox/` (pendiente) | [#16](https://github.com/pelukron/eda-starter/issues/16) | ⏳ Pendiente |
+| `OrderSaga` orchestrator + compensación | **Saga** | `src/application/sagas/order-saga.ts` | [#15](https://github.com/pelukron/eda-starter/issues/15) | ✅ Completo |
+| `TransactionalOutbox` con relay | **Outbox** | `src/infrastructure/outbox/transactional-outbox.ts` | [#16](https://github.com/pelukron/eda-starter/issues/16) | ✅ Completo |
 | Docs: pattern guides + diagramas actualizados | Documentación | `docs/` (VitePress) | [#17](https://github.com/pelukron/eda-starter/issues/17) | ⏳ Pendiente |
 
 **Por qué estos patrones:**
